@@ -21,7 +21,7 @@ namespace MovieList.Controllers
             string currentUserId = User.Identity.GetUserId();
             ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == currentUserId);
             List<Movies> List = db.Movies.Where(w => w.User.Id == currentUser.Id).ToList();
-            
+
             return View(List);
         }
 
