@@ -13,14 +13,6 @@ namespace MovieList.Controllers
         public ActionResult Index()
         {
             return View();
-        }
-
-        private ApplicationDbContext db = new ApplicationDbContext();
-
-        [Route("api/allmovies")]
-        public IEnumerable<Movies> GetAllMovies()
-        {
-            return db.Movies.ToList();
-        }
+        } 
     }
 }
