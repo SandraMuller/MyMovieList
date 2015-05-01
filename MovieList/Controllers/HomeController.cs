@@ -10,12 +10,12 @@ namespace MovieList.Controllers
     [Authorize]
     public class HomeController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
-
         public ActionResult Index()
         {
             return View();
         }
+
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         [Route("api/allmovies")]
         public IEnumerable<Movies> GetAllMovies()
