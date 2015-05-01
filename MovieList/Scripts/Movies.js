@@ -4,9 +4,13 @@
     $('.movies').children().remove();
 
     if (t != "" && CheckYear(y) === true) {
-        $.getJSON("http://www.omdbapi.com/?t="+t+"&y="+y+"&plot=short&r=json")
+        $.getJSON("http://www.omdbapi.com/?t="+t+"&y="+y+"&plot=full&r=json")
             .done(function (data) {
-                    $(".movies").append("<p>"+data.Title+"</p>");
+                $('.movies').css({ "padding": "20px" });
+                $('.movies').append('<p>Title: ' + data.Title + '</p>' + '<p>Type: ' + data.Type + '</p>' +
+                    '<p>Year: '+data.Year+'</p>'+ '<p>Genre: '+data.Genre+'</p>'+
+                    '<p>' + data.Director + '</p>' + '<p>' + data.Plot + '</p>');
+                $('.movies').append('<br><p><input type="button" value="Add" onclick="AddMovie(' + data + ');" />');
             });
 
         $('#title').val("");
