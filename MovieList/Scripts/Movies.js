@@ -1,6 +1,20 @@
-﻿var this_movie;
+﻿$(document).ready(function () {
+    $('#accordion').accordion();
+    Library();
+});
 
-function PostSearch() {
+var this_movie;
+
+function Library() {
+    $.getJSON("api/allmovies")
+        .done(function (data) {
+            $.each(data, function (key, item) {
+                $('.library').append('<li>' + item.Title + '</li>')
+            })
+        });
+}
+
+function Search() {
     var t = $('#title').val();
     var y = $('#year').val();
     $('.movies').children().remove();
@@ -15,6 +29,7 @@ function PostSearch() {
                     '<p>Genre: ' + data.Genre + '</p>' + '<p>Director/s: ' + data.Director + '</p>' +
                     '<p>' + data.Plot + '</p>');
                 $('.movies').append('<br><p id="addbtn"><input type="button" value="Add" onclick="AddMovie();" />');
+                $('#accordion').accordion("refresh");
             })
         .fail(function (jqXHR, textStatus, err) {
             alter('Error: ' + err);

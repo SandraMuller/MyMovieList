@@ -23,12 +23,20 @@ namespace MovieList
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
+                        "~/Scripts/jquery-ui-{version}.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/movies").Include(
                 "~/Scripts/movies.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-theme.css",
                       "~/Content/site.css"));
+
+  bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
+              "~/Content/themes/base/jquery.ui.core.css",
+              "~/Content/themes/base/jquery.ui.accordion.css",            
+              "~/Content/themes/base/jquery.ui.theme.css"));
         }
     }
 }

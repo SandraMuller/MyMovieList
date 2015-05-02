@@ -19,9 +19,9 @@ namespace MovieList.Controllers
 
         // GET:
         [Route("api/allmovies")]
-        public IQueryable<Movies> GetMovies()
+        public IEnumerable<Movies> GetMovies()
         {
-            return db.Movies;
+            return db.Movies.ToList();
         }
 
         // POST:
@@ -35,85 +35,5 @@ namespace MovieList.Controllers
             db.Movies.Add(movie);
             db.SaveChanges();
         }
-
-    //    // GET: api/MoviesApi/5
-    //    [ResponseType(typeof(Movies))]
-    //    public IHttpActionResult GetMovies(int id)
-    //    {
-    //        Movies movies = db.Movies.Find(id);
-    //        if (movies == null)
-    //        {
-    //            return NotFound();
-    //        }
-
-    //        return Ok(movies);
-    //    }
-
-    //    // PUT: api/MoviesApi/5
-    //    [ResponseType(typeof(void))]
-    //    public IHttpActionResult PutMovies(int id, Movies movies)
-    //    {
-    //        if (!ModelState.IsValid)
-    //        {
-    //            return BadRequest(ModelState);
-    //        }
-
-    //        if (id != movies.id)
-    //        {
-    //            return BadRequest();
-    //        }
-
-    //        db.Entry(movies).State = EntityState.Modified;
-
-    //        try
-    //        {
-    //            db.SaveChanges();
-    //        }
-    //        catch (DbUpdateConcurrencyException)
-    //        {
-    //            if (!MoviesExists(id))
-    //            {
-    //                return NotFound();
-    //            }
-    //            else
-    //            {
-    //                throw;
-    //            }
-    //        }
-
-    //        return StatusCode(HttpStatusCode.NoContent);
-    //    }
-
-    //    // POST: api/MoviesApi
-
-    //    // DELETE: api/MoviesApi/5
-    //    [ResponseType(typeof(Movies))]
-    //    public IHttpActionResult DeleteMovies(int id)
-    //    {
-    //        Movies movies = db.Movies.Find(id);
-    //        if (movies == null)
-    //        {
-    //            return NotFound();
-    //        }
-
-    //        db.Movies.Remove(movies);
-    //        db.SaveChanges();
-
-    //        return Ok(movies);
-    //    }
-
-    //    protected override void Dispose(bool disposing)
-    //    {
-    //        if (disposing)
-    //        {
-    //            db.Dispose();
-    //        }
-    //        base.Dispose(disposing);
-    //    }
-
-    //    private bool MoviesExists(int id)
-    //    {
-    //        return db.Movies.Count(e => e.id == id) > 0;
-    //    }
     }
 }
