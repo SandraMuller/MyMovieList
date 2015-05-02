@@ -21,7 +21,7 @@ namespace MovieList.Controllers
         [Route("api/allmovies")]
         public IEnumerable<Movies> GetMovies()
         {
-            return db.Movies.ToList();
+            return db.Movies.GroupBy(x => x.Title).Select(y => y.FirstOrDefault()).ToList();
         }
 
         // POST:

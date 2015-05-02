@@ -24,7 +24,10 @@ textarea {
 }
 
 .jumbotron {
-
+    height: 150px;
+    padding:10px;
+    background-color:#E6E6E6;
+    opacity:0.9;
 }
 
 .movies {
@@ -39,8 +42,25 @@ textarea {
     background-color: lightslategrey;
 }
 
+#accorResize {
+    height:200px;
+}
+
+.search {
+    margin: 20px;
+    padding: 20px; 
+}
+
 .library {
     margin: 20px;
     border: 1px solid grey;
     padding: 20px; 
+}
+
+th {
+    width:180px;
+}
+
+#descCol {
+    width:220px;
 }

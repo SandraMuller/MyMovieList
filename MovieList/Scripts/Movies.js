@@ -1,16 +1,22 @@
 ﻿$(document).ready(function () {
-    $('#accordion').accordion();
+    $('#accordion').accordion({
+        heightStyle: "fill"
+    });
     Library();
 });
 
 var this_movie;
+var heightStyle = $( "#accordion" ).accordion( "option", "heightStyle" );
+    $('#accordion').accordion("option", "heightStyle", "fill");
 
 function Library() {
+    $('.library').children().remove();
     $.getJSON("api/allmovies")
         .done(function (data) {
             $.each(data, function (key, item) {
                 $('.library').append('<li>' + item.Title + '</li>')
             })
+            $('.library').append('<br><input type="button" value="Refresh" onclick="Library();" />');
         });
 }
 
@@ -28,8 +34,7 @@ function Search() {
                     '<p>Type: ' + data.Type + '</p>' + '<p>Year: ' + data.Year + '</p>' +
                     '<p>Genre: ' + data.Genre + '</p>' + '<p>Director/s: ' + data.Director + '</p>' +
                     '<p>' + data.Plot + '</p>');
-                $('.movies').append('<br><p id="addbtn"><input type="button" value="Add" onclick="AddMovie();" />');
-                $('#accordion').accordion("refresh");
+                $('.movies').append('<br><p id="addbtn"><input type="button" value="Add" onclick="AddMovie();" /></p>');
             })
         .fail(function (jqXHR, textStatus, err) {
             alter('Error: ' + err);

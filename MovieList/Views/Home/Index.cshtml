@@ -9,7 +9,7 @@
 
 <div id="accordion">
     <h3>Search for Movies</h3>
-    <div class="search">
+    <div id="accorResize" class="search">
         <label>Title</label> <input type="text" id="title" />
         <label> Year</label> <input type="text" id="year" onkeydown="if (event.keyCode == 13) document.getElementById('btnSearch').click()" />
         <input type="button" id="btnSearch" value="Search" onclick="Search();" />
@@ -20,7 +20,7 @@
         </div>
     </div>
     <h3>View Movie Library</h3>
-    <div>
+    <div id ="accorResize">
         <div class="library"></div>
     </div>
 </div>
