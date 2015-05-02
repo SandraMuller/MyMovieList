@@ -86,10 +86,13 @@ namespace MovieList.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,Title")] Movies movies)
+        public ActionResult Edit([Bind(Include = "id,Title,Genre,Description")] Movies movies)
         {
             if (ModelState.IsValid)
             {
+                string currentUserId = User.Identity.GetUserId();
+                ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == currentUserId);
+                movies.User = currentUser;
                 db.Entry(movies).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

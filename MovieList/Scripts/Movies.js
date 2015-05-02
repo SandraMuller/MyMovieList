@@ -2,23 +2,24 @@
     $('#accordion').accordion({
         heightStyle: "fill"
     });
-    Library();
+    GetLibrary();
 });
 
 var this_movie;
-var heightStyle = $( "#accordion" ).accordion( "option", "heightStyle" );
-    $('#accordion').accordion("option", "heightStyle", "fill");
 
-function Library() {
+function GetLibrary() {
     $('.library').children().remove();
     $.getJSON("api/allmovies")
         .done(function (data) {
+            $('.library').append('<p>A list of movies in the movie library:</p>');
             $.each(data, function (key, item) {
                 $('.library').append('<li>' + item.Title + '</li>')
             })
-            $('.library').append('<br><input type="button" value="Refresh" onclick="Library();" />');
         });
 }
+
+var heightStyle = $("#accordion").accordion("option", "heightStyle");
+$('#accordion').accordion("option", "heightStyle", "fill");
 
 function Search() {
     var t = $('#title').val();
@@ -67,6 +68,7 @@ function AddMovie() {
         success: function () {
             $('#addbtn').remove();
             $('.movies').append('<p>Added to MyMovies. To edit this item please go to your <strong>MyMovies</strong> page.</p>');
+            GetLibrary();
         },
     });
 }

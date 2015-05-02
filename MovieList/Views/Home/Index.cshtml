@@ -8,8 +8,9 @@
 </div>
 
 <div id="accordion">
-    <h3>Search for Movies</h3>
+    <h3>Add Movies<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></h3>
     <div id="accorResize" class="search">
+        <p>Search for movies to add to MyMovies:</p>
         <label>Title</label> <input type="text" id="title" />
         <label> Year</label> <input type="text" id="year" onkeydown="if (event.keyCode == 13) document.getElementById('btnSearch').click()" />
         <input type="button" id="btnSearch" value="Search" onclick="Search();" />
@@ -19,7 +20,7 @@
             </p>
         </div>
     </div>
-    <h3>View Movie Library</h3>
+    <h3>Movie Library<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></h3>
     <div id ="accorResize">
         <div class="library"></div>
     </div>
