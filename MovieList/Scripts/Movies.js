@@ -18,9 +18,6 @@ function GetLibrary() {
         });
 }
 
-var heightStyle = $("#accordion").accordion("option", "heightStyle");
-$('#accordion').accordion("option", "heightStyle", "fill");
-
 function Search() {
     var t = $('#title').val();
     var y = $('#year').val();
@@ -45,13 +42,11 @@ function Search() {
         $('#year').val("");
     }
     else { alert("Please enter a valid title and year!"); }
-}
+} 
 
 function CheckYear(y) {
-    if (y.length == 4 && !isNaN(y)) {
-        return true;
-    }
-    return false;
+
+    return !isNaN(y) && y.length === 4 ? true : false;
 }
 
 function AddMovie() {
